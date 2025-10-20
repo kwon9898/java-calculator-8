@@ -1,6 +1,5 @@
 package calculator;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,10 +7,18 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
-        
+        // 4.1 입력 요청 메시지 출력
+    	System.out.println("덧셈할 문자열을 입력해 주세요.");
     	// 1.1 입력 문자열 받기
     	String input = Console.readLine();
-    	
+    	// 4.2 최종 결과 출력
+    	// 4.3 예외 발생 시 종료
+    	try {
+			int result = calculate(input);
+			System.out.println("결과 : " + result);
+		} catch (IllegalArgumentException e) {
+			System.err.println(e.getMessage());
+		}
     }
     
     // 계산 메서드      
@@ -67,9 +74,8 @@ public class Application {
     		} catch (NumberFormatException e) {
     			throw new IllegalArgumentException("숫자만 입력 가능합니다.");   		
     		}    		 
-		}        	
+		}        	 
     	return sum;    	
     }
-    
-    
+        
 }
