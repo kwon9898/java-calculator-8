@@ -38,14 +38,14 @@ public class Application {
     }
     
     // 입력한 문자열을 구분자 기준으로 나누는 메서드
-    public static String[] splitText(String text) {    	
-    	// 2.2 커스텀 구분자 처리
-    	Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
-    	if(matcher.find()) {
-    		String custom = matcher.group(1);
-    		String numbers = matcher.group(2);
-    		return numbers.split(Pattern.quote(custom));
-    	}
+    public static String[] splitText(String text) {        
+    	// 2.2 커스텀 구분자 처리    	
+        Matcher matcher = Pattern.compile("//(.)\\\\n(.*)").matcher(text);
+        if(matcher.find()) {
+        	String custom = matcher.group(1);
+        	String numbers = matcher.group(2);
+        	return numbers.split(Pattern.quote(custom));
+        }
     	
     	// 2.1 기본 구분자 처리
     	// 2.3 단일 숫자 처리
