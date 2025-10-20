@@ -18,6 +18,7 @@ public class Application {
 			System.out.println("결과 : " + result);
 		} catch (IllegalArgumentException e) {
 			System.err.println(e.getMessage());
+			throw e;
 		}
     }
     
@@ -25,7 +26,7 @@ public class Application {
     public static int calculate(String text) {    	
     	// 1.2 빈 문자열 예외처리
     	// 빈 문자열 입력 시, 문자열 구분 메서드 호출 안하기 위해서 calculate 메서드에 작성
-    	if(text.trim().isEmpty() || text == null) {
+    	if(text == null || text.trim().isEmpty()) {
     		return 0;
     	}
     	
