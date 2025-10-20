@@ -22,9 +22,11 @@ public class Application {
     		return 0;
     	}
     	
-    	// 2. 문자열 분리    	
+    	// 2. 문자열 분리   	
+    	String[] numbers = splitText(text);
     	
-    	return 0;
+    	// 3. 숫자 합산
+    	return sumNumbers(numbers);
     	
     }
     
@@ -47,7 +49,7 @@ public class Application {
     // 구분자 기준으로 나뉜 배열을 숫자로 변환 후 더하는 메서드
     // 유효성 검사 필요(1.3)
     public static int sumNumbers(String[] splitNumber) {
-
+    	int sum = 0;
     	// 1.3 음수, 숫자 아닌 문자열 예외처리
     	for (String num : splitNumber) {  
     		// 문자열이 비어있는 경우
@@ -61,15 +63,12 @@ public class Application {
     			if(number<0) {
     				throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
     			}
-    			
+    			sum += number;
     		} catch (NumberFormatException e) {
     			throw new IllegalArgumentException("숫자만 입력 가능합니다.");   		
-    		}
-    		 
-		}    	
-    	
-    	return 0;
-    	
+    		}    		 
+		}        	
+    	return sum;    	
     }
     
     
