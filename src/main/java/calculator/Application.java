@@ -1,6 +1,8 @@
 package calculator;
 
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -13,22 +15,33 @@ public class Application {
     }
     
     // 계산 메서드      
-    public static int calculate(String text) {
-    	
+    public static int calculate(String text) {    	
     	// 1.2 빈 문자열 예외처리
     	// 빈 문자열 입력 시, 문자열 구분 메서드 호출 안하기 위해서 calculate 메서드에 작성
     	if(text.trim().isEmpty() || text == null) {
     		return 0;
     	}
     	
+    	// 2. 문자열 분리    	
+    	
     	return 0;
     	
     }
     
     // 입력한 문자열을 구분자 기준으로 나누는 메서드
-    public static String[] splitText(String text) {
+    public static String[] splitText(String text) {    	
+    	// 2.2 커스텀 구분자 처리
+    	Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
+    	if(matcher.find()) {
+    		String custom = matcher.group(1);
+    		String numbers = matcher.group(2);
+    		return numbers.split(Pattern.quote(custom));
+    	}
     	
-    	return new String[0];
+    	// 2.1 기본 구분자 처리
+    	// 2.3 단일 숫자 처리
+    	return text.split("[,:]");
+    	
     }
     
     // 구분자 기준으로 나뉜 배열을 숫자로 변환 후 더하는 메서드
