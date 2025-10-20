@@ -40,7 +40,7 @@ public class Application {
     	
     	// 2.1 기본 구분자 처리
     	// 2.3 단일 숫자 처리
-    	return text.split("[,:]");
+    	return text.split("[,:]");  
     	
     }
     
